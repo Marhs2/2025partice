@@ -19,8 +19,9 @@
   border-radius: 50%;
   border: 20px solid white;
   border-left: 20px solid orange;
-  animation: loading 3s forwards;
+  /* animation: loading 3s forwards; */
   z-index: 20;
+  display: none;
   position: fixed;
   inset: 45%;
   opacity: 0;
@@ -31,8 +32,9 @@
   position: fixed;
   width: 100%;
   height: 200%;
-  animation: background 3s forwards;
+  /* animation: background 3s forwards; */
   background-color: #3d3d3d;
+  display: none;
   opacity: 0;
 }
 
@@ -145,25 +147,37 @@ img {
   object-fit: cover;
 }
 
-.content {
-  margin-top: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-left: -10px;
+.video-Box{
+  width: 1500px;
+  margin: 100px auto;
+}
+
+.video video{
+  object-fit: cover;
+  width: 1500px;
+  height: 800px ;
 }
 
 
+
+.allProduct {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1400px;
+  margin: 100px auto;
+}
+
 .container {
   display: flex;
-  width: 300px;
+  width: 250px;
   margin: 0 auto;
 }
 
 .itemBox {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 250px;
 }
 
 .itemBox > div {
@@ -174,10 +188,9 @@ img {
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
-  width: 300px;
+  width: 250px;
   height: 450px;
 }
-
 
 .btn {
   display: flex;
@@ -189,7 +202,7 @@ img {
 }
 
 .itemBox .img-box {
-  width: 250px;
+  width: 200px;
   height: 250px;
   border-radius: 10px;
   overflow: hidden;
@@ -197,7 +210,7 @@ img {
 }
 
 .itemBox img {
-  width: 250px;
+  width: 200px;
   height: 250px;
   object-fit: cover;
 }
@@ -221,12 +234,11 @@ img {
   text-overflow: ellipsis;
   word-break: break-all;
   white-space: nowrap;
-
-  width: 250px;
+  width: 200px;
   height: 17px;
 }
 
-.text-content{
+.text-content {
   width: 100%;
 }
 
@@ -304,6 +316,7 @@ img {
   font-size: 15px;
   font-weight: bold;
 }
+
 .sns {
   width: 400px;
   margin-left: 10px;

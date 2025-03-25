@@ -1,0 +1,315 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.loading-container {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+}
+
+.loading {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 20px solid white;
+  border-left: 20px solid orange;
+  animation: loading 3s forwards;
+  z-index: 20;
+  position: fixed;
+  inset: 45%;
+  opacity: 0;
+}
+
+.background {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  height: 200%;
+  animation: background 3s forwards;
+  background-color: #3d3d3d;
+  opacity: 0;
+}
+
+@keyframes background {
+  0% {
+    opacity: 1;
+    background-color: #3d3d3d;
+    z-index: 1;
+  }
+
+  50% {
+    opacity: 1;
+    background-color: #3d3d3d81;
+    z-index: 1;
+  }
+
+  100% {
+    opacity: 0;
+    background-color: transparent;
+    z-index: -1;
+    visibility: hidden;
+  }
+}
+
+@keyframes loading {
+  from {
+    display: block;
+    transform: rotate(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate(720deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+nav {
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu > a {
+  border: 1px solid black;
+}
+
+.menu > li {
+  margin-top: 40px;
+}
+
+.menu {
+  display: flex;
+  width: auto;
+  gap: 0 60px;
+  font-size: 20px;
+}
+
+.menu a {
+  font-weight: bold;
+}
+
+.menu:nth-child(3) a {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 17px;
+  border: 1px solid black;
+}
+
+.menu:nth-child(2) > li > ul li {
+  height: 0;
+  overflow: hidden;
+  color: white;
+  transition: 0.3s;
+  background-color: #333;
+  text-align: center;
+  line-height: 50px;
+}
+
+.menu:nth-child(2) > li > ul li:hover {
+  background-color: #ffc500;
+}
+
+.menu:nth-child(2) > li:hover > ul li {
+  height: 50px;
+}
+
+.menu:nth-child(2) > li > ul a {
+  color: #ffffff;
+}
+
+.menu:nth-child(2) > li > ul a:hover {
+  color: #ffffff;
+}
+
+.menu:nth-child(3) > li:nth-child(odd) > a {
+  background-color: #333;
+  color: white;
+}
+/* 메뉴 */
+
+img {
+  object-fit: cover;
+}
+
+.content {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: -10px;
+}
+
+.container {
+  display: flex;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.itemBox {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.itemBox > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.196);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  height: 450px;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemBox img {
+  filter: grayscale(30%);
+}
+
+.itemBox .img-box {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.itemBox img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.img-box img {
+  position: relative;
+  z-index: -1;
+}
+
+.img-box {
+  background-color: rgba(51, 51, 51, 0.2);
+}
+
+.text-content > div {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.text-content > div p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+
+  width: 250px;
+  height: 17px;
+}
+
+.text-content {
+  width: 100%;
+}
+
+.text-content a {
+  display: block;
+  background-color: #ffc500;
+  color: white;
+  border-radius: 15px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 25px;
+  transition: 0.3s;
+}
+
+.btn > a {
+  width: 90%;
+  margin: 0 2px;
+  font-size: 15px;
+}
+
+.saleItem {
+  display: flex;
+  width: 100%;
+}
+
+.text-content a:hover {
+  background-color: rgba(255, 217, 94, 0.835);
+}
+
+.text-content > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+
+.text-content > div:nth-child(1) > div > p:nth-child(1) {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.text-content > div:nth-child(2) > p {
+  font-size: 14px;
+}
+
+.text-content > div:nth-child(3) > p {
+  font-size: 12px;
+}
+
+/* 전체 footer 스타일 */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: white;
+  padding: 30px;
+  color: #333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.265);
+}
+
+.footer-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  width: 1400px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.link {
+  border: 3px solid #ffc500;
+  width: 1000px;
+  height: 80px;
+  line-height: 60px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.sns {
+  width: 400px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+}
+
+.footer-section img {
+  filter: grayscale(100%);
+}
