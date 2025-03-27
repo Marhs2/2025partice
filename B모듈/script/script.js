@@ -3,16 +3,18 @@ function imgsChange() {
 
   imgs.forEach((e) => {
     e.addEventListener("mouseenter", () => {
-      const des = e.querySelector(".des");
-      des.style.opacity = "1";
+      const desName = $(`.des${e.className.replace(/[^0-9]/g , '')}`)
+      desName.get(0).style.opacity = "1";
+      desName.get(0).style.visibility = "visible";  
       imgs.forEach((item) => {
         item.style.backgroundImage = `url(/B모듈/imgs/${e.className}.JPG)`;
       });
     });
 
     e.addEventListener("mouseleave", () => {
-      const des = e.querySelector(".des");
-      des.style.opacity = "0";
+      const desName = $(`.des${e.className.replace(/[^0-9]/g , '')}`)
+      desName.get(0).style.opacity = "0";
+      desName.get(0).style.visibility = "hidden";  
       imgs.forEach((item) => {
         item.style.backgroundImage = `url(/B모듈/imgs/${item.className}.JPG)`;
       });
@@ -20,4 +22,4 @@ function imgsChange() {
   });
 }
 
-imgsChange()
+imgsChange();

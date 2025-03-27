@@ -147,18 +147,23 @@ img {
   object-fit: cover;
 }
 
-.video-Box{
+.video-Box {
   width: 1500px;
   margin: 100px auto;
+  position: relative;
 }
 
-.video video{
+.video-ctrl {
+  position: absolute;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.519);
+}
+
+.video video {
   object-fit: cover;
   width: 1500px;
-  height: 800px ;
+  height: 800px;
 }
-
-
 
 .allProduct {
   margin-top: 100px;
@@ -286,6 +291,48 @@ img {
 
 .text-content > div:nth-child(3) > p {
   font-size: 12px;
+}
+
+.modal {
+  z-index: 1;
+  position: fixed;
+  inset: 0;
+  display: none;
+}
+
+.modal {
+  height: 100%;
+  background-color: hsla(0, 0%, 20%, 0.5);
+}
+
+.buy-container {
+  width: 1400px;
+  height: 700px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5% auto;
+  overflow: hidden;
+  display: flex;
+}
+
+.price-container {
+  width: 600px;
+  text-align: center;
+  line-height: 600px;
+}
+
+.item-box {
+  width: 800px;
+}
+
+.items {
+  width: 800px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 /* 전체 footer 스타일 */
