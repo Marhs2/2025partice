@@ -1,22 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <div class="redrop">
-      <div class="drag">드래그</div>
-      <div class="drag">드래그</div>
-      <div class="drag">드래그</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop Test</title>
+  <!-- Include jQuery UI CSS (Optional but recommended for styling) -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+      /* To see body drop zone */
+    }
+
+    .container {
+      display: flex;
+      gap: 30px;
+    }
+
+    /* Styles for the source items list */
+    .modal .items {
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+      min-height: 200px;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Styles for individual source/cloned items */
+    .itemBox {
+      border: 1px dashed #aaa;
+      padding: 10px;
+      background-color: #e9e9e9;
+      cursor: grab;
+      /* Indicate draggability */
+      display: flex;
+      /* Use flex for internal layout */
+      align-items: center;
+      /* Align items vertically */
+      gap: 10px;
+      position: relative;
+      /* Needed for potential positioning later */
+      visibility: visible;
+      /* Ensure initially visible */
+      opacity: 1;
+    }
+
+    .itemBox .img-box {
+      width: 50px;
+      height: 50px;
+      background-color: #ddd;
+      flex-shrink: 0;
+      /* Prevent image box from shrinking */
+      text-align: center;
+      line-height: 50px;
+    }
+
+    .itemBox .text-content {
+      flex-grow: 1;
+      /* Allow text content to take remaining space */
+    }
+
+    .itemBox .item-Name {
+      font-weight: bold;
+      margin: 0 0 5px 0;
+    }
+
+    .itemBox .fa {
+      font-style: normal;
+    }
+
+    /* Prevent italics if FontAwesome isn't loaded */
+
+    /* Styles for the drop zone (cart) */
+    .drop {
+      border: 2px solid blue;
+      padding: 15px;
+      background-color: lightblue;
+      min-height: 300px;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Style for cloned items in the drop zone */
+    .drop .itemBox.cloned {
+      border: 1px solid green;
+      background-color: lightgreen;
+    }
+
+    .drop .itemBox .itemCount {
+      width: 50px;
+      margin-left: 5px;
+    }
+
+    .totalPriceDisplay {
+      margin-top: 20px;
+      font-weight: bold;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    /* Style for the helper element during drag */
+    .ui-draggable-dragging {
+      border: 2px dotted red;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      opacity: 0.8 !important;
+      /* Override inline styles if necessary */
+      cursor: grabbing;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Drag and Drop Test</h1>
+
+  <div class="container">
+
+    <!-- Mimic the modal structure containing source items -->
+    <div class="modal">
+      <h2>Available Items</h2>
+      <div class="items">
+        <!-- Sample Item 1 -->
+        <div class="itemBox" data-id="item-001">
+          <div class="drag">
+            <div class="img-box">Img</div>
+            <div class="text-content">
+              <div>
+                <p class="item-Name">Product Alpha</p>
+              </div>
+              <div>
+                <p class="fa">가격 <span class="itemPrice">10,000</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Sample Item 2 -->
+        <div class="itemBox" data-id="item-002">
+          <div class="drag">
+            <div class="img-box">Img</div>
+            <div class="text-content">
+              <div>
+                <p class="item-Name">Product Beta</p>
+              </div>
+              <div>
+                <p class="fa">가격 <span class="itemPrice">25,000</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Sample Item 3 -->
+        <div class="itemBox" data-id="item-003">
+          <div class="drag">
+            <div class="img-box">Img</div>
+            <div class="text-content">
+              <div>
+                <p class="item-Name">Product Gamma</p>
+              </div>
+              <div>
+                <p class="fa">가격 <span class="itemPrice">5,000</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="drop"><span class="here">here drop</span></div>
-    <script src="./js/jquery-3.4.1.min.js"></script>
-    <script src="/선수제공파일/공통/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="./js/newscript.js"></script>
-  </body>
+    <!-- Drop Zone (Cart) -->
+    <div class="cart-area">
+      <h2>Shopping Cart</h2>
+      <div class="drop">
+        <!-- Dropped items will appear here -->
+      </div>
+      <div class="totalPriceDisplay">
+        총 가격: <span class="totalPrice">0</span>원
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Include jQuery UI -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+  <script src="./script.js"></script>
+
+</body>
+
 </html>
